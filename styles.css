@@ -22,23 +22,51 @@ p {
   width: 100%;
   margin-top: 7.5%;
 }
+.container {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-flow: flex-start;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: flex-start | flex-end | center | baseline | stretch;
+    margin: auto;
+    padding: auto;
+
+}
+#top {
+  margin-top: -5%;
+}
 #div1{
   width: 25%;
-  display: inline-block;
+  /*display: inline-block;*/
 
 }
 #div2 {
-  margin-top: -20%;
+  /*margin-top: -20%;
   margin-left: 10%;
-  /*margin-left: auto;*/
+  margin-left: auto;*/
   width: 25%;
-  display: inline-block;
+  /*display: inline-block;*/
 }
 #div3 {
-  margin-top: -20%;
-  margin-left: 75%;
+  /*margin-top: -20%;
+  margin-left: 75%;*/
+  width:25%;
+  /*display: inline-block;*/
+}
+#kitten1 {
+  border-style: solid 5px, white;
   width: 25%;
-  display: inline-block;
+  height: 10%;
+  margin-left: auto;
+}
+#kitten2 {
+  border-style: solid 5px, white;
+  width: 25%;
+  margin-right: 10%;
+  height: 10%;
 }
 button {
   background-color: #615A2B;
@@ -52,5 +80,9 @@ button {
 #vote2 {
   display: inline-block;
   margin-left: 3em;
+}
+section>img{
+  width: 350px;
+  height: 300px;
 }
 
