@@ -1,20 +1,30 @@
-  $(function() {
+$(function() {
 
 
    var myPics = ['images/battle_cats.jpeg', 'images/battle_cat2.jpeg', 'images/dentures_cat.jpeg', 'images/neck_tie_cat.jpeg', 'images/hoodie_cat.jpeg', 'images/llama.jpeg', 'images/pirhana_cat.jpeg', 'images/creepy_cat.jpeg', 'images/fat_cat.jpg', 'images/nerd_cat.gif', 'images/pippy_long_cat.jpg', 'images/sword_cat.jpeg', 'images/sylvester.jpeg'];
-   var objectArray = [];//Array to store instances of images
+   //Array to store instances of images
 
    //Constructor for random images
-   var BattleCats = function(votes, state, name) {
-    this.votes = votes;
-    this.state = state;
-    this.name = name;
-   }
+   var BattleCats = (function cat(votes, state, name) {
+    var objectArray = []
+      catConstructor = function () {
+        objectArray.push(this);
+        this.votes = votes;
+        this.state = state;
+        this.name = name;
+      };
+    catConstructor.each = function (fn) {
+      for (var i = 0; i < objectArray.length; i++) {
+          fn.call(objectArray[i]);
+          console.log(objectArray[i]);
+        }
+      }
+      return catConstructor;
+    }
 
-   for (var i = 0; i < myPics.length; i++) {
-    objectArray[i] = new BattleCats(myPics[i]);
-    console.log(objectArray[i]);
-   }
+    var playGame = function(img, )
+
+
 
     var cat1 = Math.floor(Math.random() * myPics.length);
     var cat2 = Math.floor(Math.random() * myPics.length);
