@@ -1,15 +1,13 @@
 'use strict';
 
 $(function() {
-  //Create array to store images
-  var myPics = ['images/battle_cat2.jpeg', 'images/creepy_cat.jpeg', 'images/dentures_cat.jpeg', 'images/neck_tie_cat.jpeg', 'images/hoodie_cat.jpeg', 'images/llama.jpeg', 'images/pirhana_cat.jpeg', 'images/fat_cat.jpg', 'images/nerd_cat.gif', 'images/pippy_long_cat.jpg', 'images/sword_cat.jpeg', 'images/sylvester.jpeg'];
-  //Create BattleCat function with (name, imgFile)
-  function BattleCat(name, imgFile, votes) {
+
+  function BattleCat(name, imgFile) {
     this.name = name;
     this.imgFile = imgFile;
     this.votes = 0;
   }
-  //Create instances of BattleCat
+
   var rufus = new BattleCat('Rufus', 'images/battle_cat2.jpeg');
   var theJackal = new BattleCat('The Jackal', 'images/creepy_cat.jpeg');
   var bruce = new BattleCat('Bruce', 'images/dentures_cat.jpeg');
@@ -23,39 +21,40 @@ $(function() {
   var rod = new BattleCat('Rod', 'images/praying_cat.jpeg');
   var mrBoots = new BattleCat('Mr. Boots', 'images/sword_cat.jpeg');
   var sylvester = new BattleCat('Sylvester', 'images/sylvester.jpeg');
-  //Store instances in array
   var myCats = [rufus, theJackal, bruce, clancy, rosco, lance, joker, robert, pippy, maxamillion, rod, mrBoots, sylvester ];
-  //Display to page
-    //Create render function for pre-vote/page-load state
-    //Prevent display of same cat from appearing
-  function preVoteRender () {
-    var rndmPic1 = _.sample(myCats);
-    var rndmPic2 = _.sample(myCats);
 
-    if (rndmPic1 === rndmPic2) {
-      rndmPic2 = _.sample(myCats);
-    };
-    $('section#kitten1').prepend('<img src="' + rndmPic1.imgFile + '">');
-    $('section#kitten2').prepend('<img src="' + rndmPic2.imgFile + '">');
+  function preVoteRender () {
+    var rndmPic1 = _.random(0, myCats.length - 1);
+    var rndmPic2 = _.random(0, myCats.length - 1);
+
+    while (rndmPic1 === rndmPic2) {
+      rndmPic2 = _.random(0, myCats.length - 1);
+    }
+    $('section#kitten1').html('<img src="' + myCats[rndmPic1].imgFile + '">');
+    $('section#kitten2').html('<img src="' + myCats[rndmPic2].imgFile + '">');
+    $('#next').hide();
+    $('.voteButton').show();
+
+    return [rndmPic1, rndmPic2]
   };
 
-  preVoteRender();
-   //Get buttons working
-  $('#vote1').on('click' function() {
-    console.log('hi!!!');
-    $( '<h2>Winner winner chicken dinner</h2>' ).append( '#kitten1' );
-    rndmPic1.votes++;
-    console.log(rndmPic1.votes);
+  var picIndex =  preVoteRender();
+
+  $('#vote1').on('click', function() {
+    $('#kitten1'  ).append( '<h2>Winner winner chicken dinner</h2>' );
+    myCats[picIndex[0]].votes++;
+    $('.voteButton').hide();
+    $('#next').show();
   });
 
-  $('#vote2').on('click' function() {
-    $('<h2>Nice Choice!</h2>').append('#kitten2');
-    rndmPic2.votes++;
-  })
-    //Add event listener to let user interact with page
-    //Create post-vote function
-      //No randomizer
-      //Highlite pic that was voted for
-      //Update chart
-      //Add button to take back to pre-vote state
+   $('#vote2').on('click', function() {
+    $('#kitten2'  ).append( '<h2>Nice Choice!</h2>' );
+    myCats[picIndex[1]].votes++;
+    $('.voteButton').hide();
+    $('#next').show();
+  });
+
+   $('#next').on('click', function() {
+    preVoteRender();
+   });
 });
