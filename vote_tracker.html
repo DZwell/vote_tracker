@@ -21,18 +21,21 @@
       <img id="pray" src="images/praying_cat.jpeg">
     </section>
   </div>
-    <h2>Below are pictures of cats. Vote for your favorite and see who wins!</h2>
+    <h2>Below are pictures of cats. Vote for your favorite!</h2>
 
   <div class="container">
     <section id="kitten1"></section>
-      <section id="button">
-      <button id="vote1" name="vote1" type="submit">This cat!</button>
-      <button id="vote2" name="vote2" type="submit">That cat!</button>
-  </section>
+    <section id="buttons">
+      <button id="vote1" class="voteButton" name="vote1" type="submit">This cat!</button>
+      <button id="vote2" class="voteButton" name="vote2" type="submit">That cat!</button>
+      <button id="next" name="next" type="submit">More Cats!</button>
+
+    </section>
     <section id="kitten2"></section>
-  </div
+  </div>
   <!-- <canvas id="cats" height="150" width="150"></canvas> -->
-  <script src="jquery-2.1.3.js"></script>
+  <script src="deps/loDash.js"></script>
+  <script src="deps/jquery-2.1.3.js"></script>
   <script type="text/javascript" src="button.js"></script>
 
 </body>
