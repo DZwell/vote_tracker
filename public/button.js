@@ -10,7 +10,7 @@ $(function() {
 
   var picIndex= []; //Array of two cats selected to battle
   var imgurCats = []; //Hold array of cats from imgur
-  var myCats = []; //Array of cat objects generatd from imgurCats
+  var myCats = []; //Array of cat objects generatd from myCats
 
   $.ajax({
     url: 'https://api.imgur.com/3/album/h1TKF.json',
